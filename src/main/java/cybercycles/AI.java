@@ -8,14 +8,17 @@ import org.json.JSONObject;
 public class AI {
 
     /* Configuration */
-    public final String ROOM = "";
-    public final String TEAM = "";
+    public final String ROOM = "3";
+    public final String TEAM = "2";
 
     /* Déplacement de l'A.I. */
     public final char[] directions = {'u', 'l', 'd', 'r'};
     public char direction;
 
     Random random = new Random();
+    
+    Player p1, p2, p3, p4;
+    Player [] p ={p1, p2, p3, p4};
 
     /**
      * Fonction appelée en début de partie.
@@ -24,8 +27,14 @@ public class AI {
      * @throws org.json.JSONException
      */
     public void start(JSONObject config) throws JSONException {
+        JSONArray a = config.getJSONArray("players");
         System.out.println("Joueurs : " + config.getJSONArray("players"));
-
+        
+        for (int i = 0; i < a.length(); i++) {
+            p[i] = new Player(a.getJSONObject(i));
+            System.out.println(p[i]);
+        }
+        
         System.out.println("Obstacles : " + config.getJSONArray("obstacles"));
 
         System.out.print("Taille de la grille : ");

@@ -21,9 +21,13 @@ public class Player {
    
     
     
-    public Player(JSONObject object)
+    public Player(JSONObject object) throws JSONException
     {
-        
+        x=object.getInt("x");
+        y=object.getInt("y");
+        id=object.getString("id");
+        team=object.getString("team");
+        direction=object.getString("direction");
     }
 
     /**
@@ -81,5 +85,12 @@ public class Player {
     public void setDirection(String direction) {
         this.direction = direction;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" + "x=" + x + ", y=" + y + ", id=" + id + ", team=" + team + ", direction=" + direction + '}';
+    }
+    
+    
     
 }
