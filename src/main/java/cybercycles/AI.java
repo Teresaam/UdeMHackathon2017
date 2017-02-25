@@ -1,5 +1,6 @@
 package cybercycles;
 
+import java.util.Arrays;
 import java.util.Random;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +21,9 @@ public class AI {
     Player p1, p2, p3, p4;
     Player [] p ={p1, p2, p3, p4};
 
+    boolean [] [] isOccupied;//false = empty
+    
+    
     /**
      * Fonction appelée en début de partie.
      *
@@ -35,12 +39,22 @@ public class AI {
             System.out.println(p[i]);
         }
         
+        isOccupied = new boolean [config.getInt("w")-1] [config.getInt("h")-1];
+        
+        System.out.println(Arrays.deepToString(isOccupied));
         System.out.println("Obstacles : " + config.getJSONArray("obstacles"));
 
         System.out.print("Taille de la grille : ");
         System.out.println(config.getInt("w") + " x " + config.getInt("h"));
 
         System.out.println("Votre identifiant : " + config.getString("me"));
+        
+        for (int i = 0; i < isOccupied.length; i++) {//isOccupied.length is the w of the grid
+            for (int j = 0; j < isOccupied[i].length; j++) {
+                if (isOccupied[i][j]) { System.out.println(i + ", " + j);}
+            }
+            
+        }
     }
 
     /**
