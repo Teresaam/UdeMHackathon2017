@@ -29,6 +29,14 @@ public class Player {
         team=object.getString("team");
         direction=object.getString("direction");
     }
+    
+    public Player(Player other) {
+        this.x = other.x;
+        this.y = other.y;
+        this.id = other.id;
+        this.team = other.team;
+        this.direction = other.direction;
+    }
 
     /**
      * @return the x
