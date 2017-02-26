@@ -11,7 +11,7 @@ public class AI {
 
     /* Configuration */
     public final String ROOM = "3";
-    public final String TEAM = "3";
+    public final String TEAM = "2";
 
     /* Déplacement de l'A.I. */
     public final static char[] directions = {'u', 'l', 'd', 'r'};
@@ -31,71 +31,71 @@ public class AI {
      * @return true if you can go in that direction
      */
     
-//    int possibilities (char ch) //change isPossible method
-//    {
-//        int poss =0;
-//        boolean a = isPoss(p[me-1].getX()+1,p[me-1].getY()-1) ;
-//        boolean b = isPoss(p[me-1].getX()-1,p[me-1].getY()-1) ;
-//        boolean c = isPoss(p[me-1].getX(),p[me-1].getY()-2) ;
-//        boolean d = isPoss(p[me-1].getX(),p[me-1].getY()+2) ;
-//        boolean e = isPoss(p[me-1].getX()-2,p[me-1].getY()) ;
-//        boolean f = isPoss(p[me-1].getX()+1,p[me-1].getY()+1) ;
-//        boolean g = isPoss(p[me-1].getX()+2,p[me-1].getY()) ;
-//        boolean h = isPoss(p[me-1].getX()-1,p[me-1].getY()+1) ;
-//        
-//        switch (ch)
-//        {
-//            case 'u':
-//                if (a) {
-//                    poss++;
-//                }
-//                if (b) {
-//                    poss++;
-//                }
-//                if (c) {
-//                    poss++;
-//                }
-//                break;
-//            case 'd':
-//                if (f) {
-//                    poss++;
-//                }
-//                if (h) {
-//                    poss++;
-//                }
-//                if (d) {
-//                    poss++;
-//                }
-//                break;
-//                
-//            case 'r':
-//                if (a) {
-//                    poss++;
-//                }
-//                if (f) {
-//                    poss++;
-//                }
-//                if (g) {
-//                    poss++;
-//                }
-//                
-//                break;
-//                
-//            case 'l':
-//                if (b) {
-//                    poss++;
-//                }
-//                if (h) {
-//                    poss++;
-//                }
-//                if (e) {
-//                    poss++;
-//                }
-//                break;
-//        }
-//        return poss;
-//            
-//    }
+    int possibilities (char ch) //change isPossible method
+    {
+        int poss =0;
+        boolean a = isPoss(p[me-1].getX()+1,p[me-1].getY()-1) ;
+        boolean b = isPoss(p[me-1].getX()-1,p[me-1].getY()-1) ;
+        boolean c = isPoss(p[me-1].getX(),p[me-1].getY()-2) ;
+        boolean d = isPoss(p[me-1].getX(),p[me-1].getY()+2) ;
+        boolean e = isPoss(p[me-1].getX()-2,p[me-1].getY()) ;
+        boolean f = isPoss(p[me-1].getX()+1,p[me-1].getY()+1) ;
+        boolean g = isPoss(p[me-1].getX()+2,p[me-1].getY()) ;
+        boolean h = isPoss(p[me-1].getX()-1,p[me-1].getY()+1) ;
+        
+        switch (ch)
+        {
+            case 'u':
+                if (a) {
+                    poss++;
+                }
+                if (b) {
+                    poss++;
+                }
+                if (c) {
+                    poss++;
+                }
+                break;
+            case 'd':
+                if (f) {
+                    poss++;
+                }
+                if (h) {
+                    poss++;
+                }
+                if (d) {
+                    poss++;
+                }
+                break;
+                
+            case 'r':
+                if (a) {
+                    poss++;
+                }
+                if (f) {
+                    poss++;
+                }
+                if (g) {
+                    poss++;
+                }
+                
+                break;
+                
+            case 'l':
+                if (b) {
+                    poss++;
+                }
+                if (h) {
+                    poss++;
+                }
+                if (e) {
+                    poss++;
+                }
+                break;
+        }
+        return poss;
+            
+    }
     
     public boolean isPossible(char d) {
         Player play = p[me-1];
@@ -383,40 +383,40 @@ public class AI {
 
         System.out.print("\n");
 
-//       int[] listPoss = new int [4];
-//        for (int i = 0; i < 4; i++) {
-//            if (isPossible(directions[i])) {
-//                listPoss[i] = possibilities (directions[i]);
-//            }
-//            else listPoss[i]=-1;
-            
-            
-            
-//        }
-//        int max=0;
-//        int maxIndex= 0;
-//        
-//        for (int i = 0; i < 4; i++) {
-//            if (listPoss[i]>max) {
-//                
-//             max=   listPoss[i] ;
-//             maxIndex = i;
-//             
-//            }
-           // }
-int index=0;
+       int[] listPoss = new int [4];
         for (int i = 0; i < 4; i++) {
-            System.out.println("dir=" + directions[i] + ", " + isPossible(directions[i]));
-            
-            if (isPossible (directions[i])) 
-                { 
-                
-                index=i;
-                
+            if (isPossible(directions[i])) {
+                listPoss[i] = possibilities (directions[i]);
             }
+            else listPoss[i]=-1;
+            
+            
+            
         }
-         System.out.println(directions[index]);  
-        return directions[index];
+        int max=0;
+        int maxIndex= 0;
+        
+        for (int i = 0; i < 4; i++) {
+            if (listPoss[i]>max) {
+                
+             max=   listPoss[i] ;
+             maxIndex = i;
+             
+            }
+            }
+//int index=0;
+//        for (int i = 0; i < 4; i++) {
+//            System.out.println("dir=" + directions[i] + ", " + isPossible(directions[i]));
+//            
+//            if (isPossible (directions[i])) 
+//                { 
+//                
+//                index=i;
+//                
+//            }
+//        }
+        // System.out.println(directions[index]);  
+        return directions[maxIndex];
 
         // Choisis une direction au hasard
         //  direction = directions[random.nextInt(directions.length)];
